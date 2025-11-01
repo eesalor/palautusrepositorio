@@ -1,5 +1,5 @@
 import unittest
-from statistics_service import StatisticsService
+from statistics_service import StatisticsService, SortBy
 from player import Player
 
 class PlayerReaderStub:
@@ -41,3 +41,25 @@ class TestStatisticsService(unittest.TestCase):
         self.assertEqual("Gretzky", top_players[0].name)
         self.assertEqual("Lemieux", top_players[1].name)
         self.assertEqual("Yzerman", top_players[2].name)
+
+    def test_top_with_points_sorting(self):
+        top_players = self.stats.top(3, sort_by=SortBy.POINTS)
+        self.assertEqual("Gretzky", top_players[0].name)
+        self.assertEqual("Lemieux", top_players[1].name)
+        self.assertEqual("Yzerman", top_players[2].name)
+
+    def test_top_with_goals_sorting(self):
+        top_players = self.stats.top(3, sort_by=SortBy.GOALS)
+        self.assertEqual("Lemieux", top_players[0].name)
+        self.assertEqual("Yzerman", top_players[1].name)
+        self.assertEqual("Kurri", top_players[2].name)
+
+    def test_top_with_assists_sorting(self):
+        top_players = self.stats.top(3, sort_by=SortBy.ASSISTS)
+        self.assertEqual("Gretzky", top_players[0].name)
+        self.assertEqual("Yzerman", top_players[1].name)
+        self.assertEqual("Lemieux", top_players[2].name)
+
+    def test_top_with_invalid_sorting_raises_value_error(self):
+        with self.assertRaises(ValueError):
+            self.stats.top(3, sort_by="INVALID_SORTING")
