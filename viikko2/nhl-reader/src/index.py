@@ -15,10 +15,13 @@ def main():
         if player.nationality == "FIN":
             players.append(player)
 
+    def sort_by_points(player: Player):
+        return player.points
+
     print("Players from FIN:")
     print()
 
-    for player in players:
+    for player in sorted(players, key=sort_by_points, reverse=True):
         print(player)
 
 
