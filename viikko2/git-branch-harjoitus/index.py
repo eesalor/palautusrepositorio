@@ -15,3 +15,5 @@ print(f"Lukujen {x} ja {y} tulon on {tulo(x, y)]")
 
 logger("lopetetaan ohjelma")
 print("goodbye!") # lisäys bugikorjaus-branchissa
+
+# Tähän lisätty kommentti alkuperäisessä kloonissa.
