@@ -11,7 +11,7 @@ class TennisGame:
         else:
             self.player2_score += 1
 
-    def score_to_text(self, score):
+    def _score_to_text(self, score):
         scores = {0: "Love", 1: "Fifteen", 2: "Thirty", 3: "Forty"}
         return scores[score]
 
@@ -30,7 +30,7 @@ class TennisGame:
 
         if self.player1_score == self.player2_score:
             if self.player1_score < 3:
-                score = self.score_to_text(self.player1_score) + "-All"
+                score = self._score_to_text(self.player1_score) + "-All"
             else:
                 score = "Deuce"
 
@@ -39,6 +39,6 @@ class TennisGame:
                 difference = self.player1_score - self.player2_score
                 score = self._get_advantage_or_win(difference)
             else:
-                score = self.score_to_text(self.player1_score) + "-" + self.score_to_text(self.player2_score)
+                score = self._score_to_text(self.player1_score) + "-" + self._score_to_text(self.player2_score)
 
         return score
