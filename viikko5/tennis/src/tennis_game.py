@@ -15,7 +15,7 @@ class TennisGame:
         scores = {0: "Love", 1: "Fifteen", 2: "Thirty", 3: "Forty"}
         return scores[score]
 
-    def get_advantage_or_win(self, difference):
+    def _get_advantage_or_win(self, difference):
         if difference == 1:
             return "Advantage player1"
         elif difference == -1:
@@ -37,7 +37,7 @@ class TennisGame:
         else:
             if self.player1_score >= 4 or self.player2_score >= 4:
                 difference = self.player1_score - self.player2_score
-                score = self.get_advantage_or_win(difference)
+                score = self._get_advantage_or_win(difference)
             else:
                 score = self.score_to_text(self.player1_score) + "-" + self.score_to_text(self.player2_score)
 
